@@ -1,6 +1,6 @@
 {
   "name": "loadpulse-agent",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Test runner agent for LoadPulse dashboard. Run: npx loadpulse-agent",
   "type": "module",
   "bin": {
