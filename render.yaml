@@ -6,7 +6,7 @@ services:
     runtime: node
     rootDir: web
     buildCommand: npm install && npm run build
-    startCommand: node .next/standalone/server.js
+    startCommand: node .next/standalone/web/server.js
     envVars:
       - key: NODE_ENV
         value: production
