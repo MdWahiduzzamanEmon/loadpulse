@@ -6,7 +6,9 @@ services:
     runtime: node
     rootDir: web
     buildCommand: npm install && npm run build
-    startCommand: npm start -- --port $PORT
+    startCommand: node .next/standalone/server.js
     envVars:
       - key: NODE_ENV
         value: production
+      - key: PORT
+        value: 10000
