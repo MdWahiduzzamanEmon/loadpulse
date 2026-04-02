@@ -1,0 +1,22 @@
+services:
+  # LoadPulse Dashboard (Next.js)
+  - type: web
+    name: loadpulse-dashboard
+    runtime: node
+    rootDir: web
+    buildCommand: npm install && npm run build
+    startCommand: npm start -- --port $PORT
+    envVars:
+      - key: NODE_ENV
+        value: production
+
+  # LoadPulse Agent (Node.js WebSocket)
+  - type: web
+    name: loadpulse-agent
+    runtime: node
+    rootDir: agent
+    buildCommand: npm install && npm run build
+    startCommand: node dist/cli.js --port $PORT
+    envVars:
+      - key: NODE_ENV
+        value: production
