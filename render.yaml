@@ -1,16 +1,11 @@
 services:
-  # LoadPulse Dashboard (Next.js) — hosted on Render
-  # Users run the agent locally: npx loadpulse-agent
   - type: web
     name: loadpulse
     runtime: node
-    rootDir: web
-    buildCommand: npm install && npm run build && cp -r .next/static .next/standalone/web/.next/static && cp -r public .next/standalone/web/public
-    startCommand: node .next/standalone/web/server.js
+    buildCommand: npm install && cd web && npm run build && cp -r .next/static .next/standalone/web/.next/static && cp -r public .next/standalone/web/public
+    startCommand: cd web && node .next/standalone/web/server.js
     envVars:
       - key: NODE_ENV
         value: production
-      - key: PORT
-        value: 10000
       - key: HOSTNAME
         value: 0.0.0.0
