@@ -32,8 +32,8 @@ export default function ConnectPage() {
   const saved = typeof window !== "undefined" ? localStorage.getItem("loadpulse-connection") : null;
   const savedConn = saved ? (() => { try { return JSON.parse(saved); } catch { return null; } })() : null;
 
-  const [serverUrl, setServerUrl] = useState(savedConn?.url || server?.url || "http://5.189.170.219:9001");
-  const [agentUrl, setAgentUrl] = useState(savedConn?.agentUrl || server?.agentUrl || "http://localhost:3050");
+  const [serverUrl, setServerUrl] = useState(savedConn?.url || server?.url || "");
+  const [agentUrl, setAgentUrl] = useState(savedConn?.agentUrl || server?.agentUrl || "");
   const [username, setUsername] = useState(savedConn?.username || server?.username || "");
   const [password, setPassword] = useState(savedConn?.password || server?.password || "");
   const [connecting, setConnecting] = useState(false);
@@ -106,9 +106,55 @@ export default function ConnectPage() {
       >
         <h1 className="text-3xl font-bold">Connect to Server</h1>
         <p className="text-muted-foreground mt-1">
-          Enter your API server details and connect the test agent.
+          Connect the LoadPulse agent to your API server and start testing.
         </p>
       </motion.div>
+
+      {/* Setup Guide — shown when not connected */}
+      {!agentConnected && endpoints.length === 0 && (
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.05 }}
+        >
+          <Card className="border-primary/20 bg-primary/5">
+            <CardHeader className="pb-2">
+              <CardTitle className="text-base">Quick Setup</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-3 text-sm">
+              <div className="flex gap-3">
+                <span className="shrink-0 w-6 h-6 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-xs font-bold">1</span>
+                <div>
+                  <p className="font-medium">Start the agent on your machine</p>
+                  <code className="block mt-1 px-3 py-1.5 bg-muted rounded text-xs font-mono select-all">npx loadpulse-agent</code>
+                  <p className="text-muted-foreground text-xs mt-1">Or with Docker: <code className="bg-muted px-1 rounded">docker run -p 3050:3050 emon424096/loadpulse-agent</code></p>
+                </div>
+              </div>
+              <div className="flex gap-3">
+                <span className="shrink-0 w-6 h-6 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-xs font-bold">2</span>
+                <div>
+                  <p className="font-medium">Enter your API server URL below</p>
+                  <p className="text-muted-foreground text-xs">e.g. <code className="bg-muted px-1 rounded">http://localhost:8000</code> or <code className="bg-muted px-1 rounded">https://api.yourapp.com</code></p>
+                </div>
+              </div>
+              <div className="flex gap-3">
+                <span className="shrink-0 w-6 h-6 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-xs font-bold">3</span>
+                <div>
+                  <p className="font-medium">Enter agent URL (where the agent is running)</p>
+                  <p className="text-muted-foreground text-xs">Default: <code className="bg-muted px-1 rounded">http://localhost:3050</code> — change only if you run it on a different port or machine.</p>
+                </div>
+              </div>
+              <div className="flex gap-3">
+                <span className="shrink-0 w-6 h-6 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-xs font-bold">4</span>
+                <div>
+                  <p className="font-medium">Add credentials (if your API requires authentication)</p>
+                  <p className="text-muted-foreground text-xs">Username and password for login. Stored in your browser only — never sent to LoadPulse.</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </motion.div>
+      )}
 
       <div className="grid gap-6 md:grid-cols-2">
         {/* Server Config */}
@@ -129,7 +175,7 @@ export default function ConnectPage() {
                 <Label htmlFor="serverUrl">API Server URL</Label>
                 <Input
                   id="serverUrl"
-                  placeholder="http://your-server:9001"
+                  placeholder="https://api.yourapp.com"
                   value={serverUrl}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setServerUrl(e.target.value)}
                 />
