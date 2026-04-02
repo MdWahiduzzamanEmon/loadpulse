@@ -15,8 +15,42 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "LoadPulse",
-  description: "Visual API testing dashboard",
+  title: {
+    default: "LoadPulse — Visual API Load Testing Dashboard",
+    template: "%s | LoadPulse",
+  },
+  description:
+    "Test any REST API with 7 test types: load, stress, spike, soak, functional, cache, and auth. Real-time animated results, per-endpoint stats, and detailed error breakdowns.",
+  keywords: [
+    "API testing",
+    "load testing",
+    "stress testing",
+    "API monitoring",
+    "performance testing",
+    "REST API",
+    "WebSocket",
+    "developer tools",
+    "LoadPulse",
+  ],
+  authors: [{ name: "LoadPulse" }],
+  creator: "LoadPulse",
+  openGraph: {
+    type: "website",
+    title: "LoadPulse — Visual API Load Testing Dashboard",
+    description:
+      "Test any REST API with real-time animated results. 7 test types, live charts, per-endpoint breakdowns.",
+    siteName: "LoadPulse",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "LoadPulse — Visual API Load Testing Dashboard",
+    description:
+      "Test any REST API with real-time animated results. 7 test types, live charts, per-endpoint breakdowns.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
