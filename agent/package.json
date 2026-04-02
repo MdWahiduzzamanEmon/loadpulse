@@ -1,0 +1,26 @@
+{
+  "name": "loadpulse-agent",
+  "version": "0.1.0",
+  "description": "Test runner agent for LoadPulse dashboard. Run: npx loadpulse-agent",
+  "type": "module",
+  "bin": {
+    "loadpulse-agent": "dist/cli.js"
+  },
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": ["api", "testing", "load-test", "stress-test", "websocket"],
+  "license": "MIT",
+  "dependencies": {
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "@types/ws": "^8.18.1",
+    "@types/node": "^22.15.3",
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3"
+  }
+}
