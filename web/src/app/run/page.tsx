@@ -82,7 +82,7 @@ export default function RunPage() {
   // Empty states
   if (!agentConnected) {
     return (
-      <div className="p-8 max-w-5xl mx-auto">
+      <div className="px-4 py-6 sm:px-6 lg:px-8 max-w-5xl mx-auto">
         <h1 className="text-3xl font-bold mb-4">Run Tests</h1>
         <Card>
           <CardContent className="pt-6 text-center">
@@ -97,7 +97,7 @@ export default function RunPage() {
 
   if (selectedEndpoints.length === 0) {
     return (
-      <div className="p-8 max-w-5xl mx-auto">
+      <div className="px-4 py-6 sm:px-6 lg:px-8 max-w-5xl mx-auto">
         <h1 className="text-3xl font-bold mb-4">Run Tests</h1>
         <Card>
           <CardContent className="pt-6 text-center">
@@ -111,7 +111,7 @@ export default function RunPage() {
   }
 
   return (
-    <div className="p-8 max-w-5xl mx-auto space-y-6">
+    <div className="px-4 py-6 sm:px-6 lg:px-8 max-w-5xl mx-auto space-y-6">
       {/* Header */}
       <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }}>
         <h1 className="text-3xl font-bold">Run Tests</h1>
@@ -154,7 +154,7 @@ export default function RunPage() {
 
       {/* Live counters */}
       {results.length > 0 && (
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="grid grid-cols-2 md:grid-cols-5 gap-4">
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
           <Card><CardContent className="pt-5 pb-4"><LiveCounter value={results.length} label="Total Requests" /></CardContent></Card>
           <Card><CardContent className="pt-5 pb-4"><LiveCounter value={successCount} label="Success (2xx/3xx)" color="text-emerald-500" /></CardContent></Card>
           <Card><CardContent className="pt-5 pb-4"><LiveCounter value={serverErrors} label="Server Errors (5xx)" color={serverErrors > 0 ? "text-red-500" : "text-muted-foreground"} /></CardContent></Card>

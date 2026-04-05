@@ -14,7 +14,7 @@ export default function HistoryPage() {
 
   if (history.length === 0) {
     return (
-      <div className="p-8 max-w-4xl mx-auto">
+      <div className="px-4 py-6 sm:px-6 lg:px-8 max-w-4xl mx-auto">
         <h1 className="text-3xl font-bold mb-4">History</h1>
         <Card>
           <CardContent className="pt-6 text-center text-muted-foreground">
@@ -27,7 +27,7 @@ export default function HistoryPage() {
   }
 
   return (
-    <div className="p-8 max-w-4xl mx-auto space-y-6">
+    <div className="px-4 py-6 sm:px-6 lg:px-8 max-w-4xl mx-auto space-y-6">
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}

@@ -85,7 +85,7 @@ export default function EndpointsPage() {
 
   if (endpoints.length === 0) {
     return (
-      <div className="p-8 max-w-4xl mx-auto">
+      <div className="px-4 py-6 sm:px-6 lg:px-8 max-w-4xl mx-auto">
         <h1 className="text-3xl font-bold mb-4">Endpoints</h1>
         <Card>
           <CardContent className="pt-6 text-center text-muted-foreground">
@@ -100,22 +100,22 @@ export default function EndpointsPage() {
   }
 
   return (
-    <div className="p-8 max-w-4xl mx-auto space-y-6">
+    <div className="px-4 py-6 sm:px-6 lg:px-8 max-w-4xl mx-auto space-y-6">
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
       >
-        <div className="flex items-center justify-between">
+        <div className="space-y-3">
           <div>
-            <h1 className="text-3xl font-bold">Endpoints</h1>
-            <p className="text-muted-foreground mt-1">
-              {endpoints.length} endpoints discovered &middot;{" "}
+            <h1 className="text-2xl sm:text-3xl font-bold">Endpoints</h1>
+            <p className="text-muted-foreground mt-1 text-sm">
+              {endpoints.length} discovered &middot;{" "}
               {endpoints.filter((e) => e.method === "GET").length} testable (GET) &middot;{" "}
               {selectedEndpoints.length} selected
             </p>
           </div>
-          <div className="flex gap-2">
+          <div className="flex flex-wrap gap-2">
             <Button
               variant="outline"
               size="sm"

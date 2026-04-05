@@ -125,7 +125,7 @@ export default function TestConfigPanel({
           {/* Test Type Grid */}
           <div>
             <Label className="mb-3 block">Test Type</Label>
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-2">
+            <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-7 gap-2">
               {TEST_TYPES.map(({ value, label, icon: Icon }) => (
                 <button
                   key={value}

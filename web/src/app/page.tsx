@@ -97,7 +97,7 @@ export default function ConnectPage() {
   );
 
   return (
-    <div className="p-8 max-w-4xl mx-auto space-y-8">
+    <div className="px-4 py-6 sm:px-6 lg:px-8 max-w-4xl mx-auto space-y-8">
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: -20 }}
