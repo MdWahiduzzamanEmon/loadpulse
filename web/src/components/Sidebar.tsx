@@ -161,8 +161,6 @@ export default function Sidebar() {
         {sidebarContent}
       </aside>
 
-      {/* Spacer for mobile top bar so content doesn't go under it */}
-      <div className="lg:hidden h-14 shrink-0" />
     </>
   );
 }
